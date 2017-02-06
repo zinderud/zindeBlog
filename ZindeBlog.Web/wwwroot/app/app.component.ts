@@ -8,7 +8,7 @@ import { enableProdMode } from '@angular/core';
 enableProdMode();
  
 import { User } from './core/domain/user';
-
+ 
 @Component({
     selector: 'zindeblog-app',
     templateUrl: './app/app.component.html'

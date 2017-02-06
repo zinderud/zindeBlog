@@ -32,7 +32,7 @@ class AppBaseRequestOptions extends BaseRequestOptions {
     ],
     declarations: [AppComponent],
     providers: [ 
-    //CategoryService,
+   
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         { provide: RequestOptions, useClass: AppBaseRequestOptions }],
     bootstrap: [AppComponent]

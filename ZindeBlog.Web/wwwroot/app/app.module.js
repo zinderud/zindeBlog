@@ -47,7 +47,6 @@ AppModule = __decorate([
         ],
         declarations: [app_component_1.AppComponent],
         providers: [
-            //CategoryService,
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
             { provide: http_2.RequestOptions, useClass: AppBaseRequestOptions }
         ],
