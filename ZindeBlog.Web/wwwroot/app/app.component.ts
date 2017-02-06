@@ -11,7 +11,7 @@ import { User } from './core/domain/user';
 
 @Component({
     selector: 'zindeblog-app',
-    templateUrl: './app.component.html'
+    templateUrl: './app/app.component.html'
 })
 export class AppComponent implements OnInit {
 

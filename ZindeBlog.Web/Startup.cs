@@ -170,7 +170,7 @@ namespace ZindeBlog.Web
          
 
             loggerFactory.AddNLog();
-            enviroment.ConfigureNLog("NLog.config");
+            loggerFactory.ConfigureNLog("NLog.config");
             //app.Run(async (context) =>
             //{
             //    await context.Response.WriteAsync("Hello World!");
