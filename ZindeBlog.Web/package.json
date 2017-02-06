@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "name": "photogallery",
+  "author": "Chris Sakellarios",
+  "license": "MIT",
+  "repository": "https://github.com/chsakell/aspnet5-angular2-typescript",
+  "private": true,
+  "dependencies": {
+    "@angular/common": "^2.2.4",
+    "@angular/compiler": "^2.2.4",
+    "@angular/core": "^2.2.4",
+    "@angular/forms": "^2.2.4",
+    "@angular/http": "^2.2.4",
+    "@angular/platform-browser": "^2.2.4",
+    "@angular/platform-browser-dynamic": "^2.2.4",
+    "@angular/router": "^3.2.0",
+    "@angular/upgrade": "^2.2.4",
+
+
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "es6-shim": "^0.35.2",
+    "fancybox": "^3.0.0",
+    "jquery": "2.1.4",
+
+    "angular-in-memory-web-api": "~0.1.15",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs":"^5.0.3",
+    "systemjs": "0.19.39",
+    "zone.js": "^0.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.45",
+    "del": "^2.2.2",
+    "gulp": "3.9.1",
+    "gulp-typescript": "^3.1.4",
+    "gulp-watch": "^4.3.11",
+    "merge": "^1.2.0",
+    "typescript": "^2.1.4",
+    "typings": "^2.1.0"
+  },
+  "scripts": {
+    "postinstall": "typings install"
+  }
+}

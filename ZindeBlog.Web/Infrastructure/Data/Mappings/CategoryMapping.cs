@@ -1,0 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using ZindeBlog.Web.Entities.Blog;
+
+namespace ZindeBlog.Web.Infrastructure.Data.Mappings
+{
+    public static class CategoryMapping
+    {
+        public static void Map(EntityTypeBuilder<Category> builder)
+        {
+            builder.ToTable("Category");
+            builder.HasKey(t => t.ID);
+
+            builder.Property(t => t.ID).ValueGeneratedOnAdd().UseSqlServerIdentityColumn();
+            builder.Property(t => t.Name).IsRequired().HasMaxLength(50);
+            builder.Property(t => t.Description).HasMaxLength(200);
+        }
+    }
+}

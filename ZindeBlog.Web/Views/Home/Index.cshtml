@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "ZindeBlog";
+}
+
+@section styles
+{
+    <link href="~/lib/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/css/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/css/alertify.core.css" rel="stylesheet" />
+    <link href="~/lib/css/alertify.bootstrap.css" rel="stylesheet" />
+    @*<link href="~/lib/css/alertify.default.css" rel="stylesheet" />*@
+}
+
+<div id="nav-separator"></div>
+
+<zindeblog-app>
+    <div class="loading">Loading</div>
+</zindeblog-app>
+
+@section scripts
+{
+    <script src="~/lib/js/jquery.fancybox.pack.js"></script>
+    <script src="~/lib/js/alertify.min.js"></script>
+}
+
+@section customScript
+{
+    System.import('app').catch(console.log.bind(console));
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+    });
+}
