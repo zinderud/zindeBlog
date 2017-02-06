@@ -19,15 +19,8 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var common_1 = require("@angular/common");
 var http_2 = require("@angular/http");
-var account_module_1 = require("../app/module/account/account.module");
 var app_component_1 = require("./app.component");
-var home_component_1 = require("../app/components/home/home.component");
-var routes_1 = require("../app/routes");
-var data_service_1 = require("../app/core/services/data.service");
-var membership_service_1 = require("../app/core/services/membership.service");
-var utility_service_1 = require("../app/core/services/utility.service");
-var notification_service_1 = require("../app/core/services/notification.service");
-//import{CategoryService} from '../../core/services/category.ts.service'
+var routes_1 = require("./routes");
 var AppBaseRequestOptions = (function (_super) {
     __extends(AppBaseRequestOptions, _super);
     function AppBaseRequestOptions() {
@@ -50,14 +43,14 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            routes_1.routing,
-            account_module_1.AccountModule
+            routes_1.routing
         ],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
-        providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,
+        declarations: [app_component_1.AppComponent],
+        providers: [
             //CategoryService,
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
-            { provide: http_2.RequestOptions, useClass: AppBaseRequestOptions }],
+            { provide: http_2.RequestOptions, useClass: AppBaseRequestOptions }
+        ],
         bootstrap: [app_component_1.AppComponent]
     }),
     __metadata("design:paramtypes", [])

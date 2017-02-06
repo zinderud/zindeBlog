@@ -6,19 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { Location, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { Headers, RequestOptions, BaseRequestOptions } from '@angular/http';
 
-import { AccountModule } from '../app/module/account/account.module';
-import { AppComponent } from './app.component';
+ import { AppComponent } from './app.component';
  
-import { HomeComponent } from '../app/components/home/home.component';
+  
+import { routing } from './routes';
+
  
-import { routing } from '../app/routes';
-
-
-import { DataService } from '../app/core/services/data.service';
-import { MembershipService } from '../app/core/services/membership.service';
-import { UtilityService } from '../app/core/services/utility.service';
-import { NotificationService } from '../app/core/services/notification.service';
-//import{CategoryService} from '../../core/services/category.ts.service'
 class AppBaseRequestOptions extends BaseRequestOptions {
     headers: Headers = new Headers();
 
@@ -34,11 +27,11 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing,
-        AccountModule
+        routing
+    
     ],
-    declarations: [AppComponent, HomeComponent],
-    providers: [DataService, MembershipService, UtilityService, NotificationService,
+    declarations: [AppComponent],
+    providers: [ 
     //CategoryService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         { provide: RequestOptions, useClass: AppBaseRequestOptions }],
