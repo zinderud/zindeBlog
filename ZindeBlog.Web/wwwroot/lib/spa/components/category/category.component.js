@@ -9,9 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+require("rxjs/add/operator/map");
+var core_2 = require("@angular/core");
+core_2.enableProdMode();
+var category_ts_service_1 = require("../../core/services/category.ts.service");
 var CategoryComponent = (function () {
-    function CategoryComponent() {
+    function CategoryComponent(categoryService) {
+        // var c = new Category();
+        // c.Description = "ss";
+        this.categoryService = categoryService;
+        this.pageTitle = 'Category Test';
+        //this._category.push(c);
     }
+    CategoryComponent.prototype.ngOnInit = function () {
+        this._category = this.categoryService.all();
+    };
     return CategoryComponent;
 }());
 CategoryComponent = __decorate([
@@ -19,6 +31,6 @@ CategoryComponent = __decorate([
         selector: 'category',
         templateUrl: './app/components/category/category.component.html'
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [category_ts_service_1.CategoryService])
 ], CategoryComponent);
 exports.CategoryComponent = CategoryComponent;

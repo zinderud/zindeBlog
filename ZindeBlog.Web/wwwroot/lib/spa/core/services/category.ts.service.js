@@ -23,21 +23,15 @@ var CategoryService = (function () {
         this._categoryRemoveAPI = 'api/category/remove/';
         this._categoryEditAPI = 'api/category/{id:number}/';
     }
-    //all():Observable<Category[]>{
+    //all():Observable<Category>{
     // return this._http.get(this._categoryAllAPI)
-    //             .map((response: Response) => <Category[]> response.json())
+    //             .map((response: Response) => <Category> response.json())
     //            .do(data => console.log('All: ' +  JSON.stringify(data)))
-    //            .catch(this.handleError); 
+    //             ; 
     //}
-    //addCotegory(cat: Category): Observable<Category> {
-    //    let catString = JSON.stringify(cat); // Stringify payload
-    //    return this._http.post(this._categoryAddAPI, catString) // ...using post request
-    //        .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
-    //        .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
-    //} 
     CategoryService.prototype.all = function () {
         this.categoryService.set(this._categoryAllAPI);
-        return this.categoryService.getAll();
+        return this.categoryService.getAll().map(function (response) { return response.json(); }).do(function (data) { return console.log('All: ' + JSON.stringify(data)); });
     };
     CategoryService.prototype.addcategory = function (newcat) {
         this.categoryService.set(this._categoryAddAPI);
@@ -46,11 +40,6 @@ var CategoryService = (function () {
     CategoryService.prototype.deleteCategory = function (id) {
         this.categoryService.set(this._categoryRemoveAPI);
         return this.categoryService.delete(id);
-    };
-    CategoryService.prototype.getCategory = function (id) {
-        //this.categoryService.set(this._categoryEditAPI);
-        return this.all()
-            .map(function (cat) { return cat.find(function (p) { return p.ID === id; }); });
     };
     return CategoryService;
 }());

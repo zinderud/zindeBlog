@@ -4,7 +4,7 @@ import { DataService } from './data.service';
 import { Category } from '../domain/BlogDomain';
 import { Observable } from 'rxjs/Observable';
 import { NotificationService } from '../../core/services/notification.service';
-
+ 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -16,25 +16,18 @@ export class CategoryService {
     private _categoryRemoveAPI: string = 'api/category/remove/';
     private _categoryEditAPI: string = 'api/category/{id:number}/';
 
-constructor(public categoryService:DataService, public notificationService: NotificationService) { }
+    constructor(public categoryService: DataService, public notificationService: NotificationService ) { }
 
-//all():Observable<Category[]>{
+//all():Observable<Category>{
 // return this._http.get(this._categoryAllAPI)
-//             .map((response: Response) => <Category[]> response.json())
+//             .map((response: Response) => <Category> response.json())
 //            .do(data => console.log('All: ' +  JSON.stringify(data)))
-//            .catch(this.handleError); 
+//             ; 
 //}
-      //addCotegory(cat: Category): Observable<Category> {
-  //    let catString = JSON.stringify(cat); // Stringify payload
-
-
-  //    return this._http.post(this._categoryAddAPI, catString) // ...using post request
-  //        .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
-  //        .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
-  //} 
+ 
 all() {
     this.categoryService.set(this._categoryAllAPI);
-    return this.categoryService.getAll();
+    return this.categoryService.getAll().map((response: Response) => <Category>response.json()).do(data => console.log('All: ' + JSON.stringify(data)));
     }
 
 addcategory(newcat: Category) {
@@ -51,11 +44,7 @@ deleteCategory(id: number) {
 
 }
 
-getCategory(id: number): Observable<Category> {
-    //this.categoryService.set(this._categoryEditAPI);
-      return this.all()
-          .map((cat: Category[]) => cat.find(p => p.ID === id));
-  }
+
 
 
 
