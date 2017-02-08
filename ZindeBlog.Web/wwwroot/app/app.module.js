@@ -21,11 +21,12 @@ var common_1 = require("@angular/common");
 var http_2 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var routes_1 = require("./routes");
-var data_service_1 = require("../app/core/services/data.service");
-var membership_service_1 = require("../app/core/services/membership.service");
-var utility_service_1 = require("../app/core/services/utility.service");
-var notification_service_1 = require("../app/core/services/notification.service");
-var category_ts_service_1 = require("../app/core/services/category.ts.service");
+var home_component_1 = require("./components/home/home.component");
+var data_service_1 = require("./core/services/data.service");
+var membership_service_1 = require("./core/services/membership.service");
+var utility_service_1 = require("./core/services/utility.service");
+var notification_service_1 = require("./core/services/notification.service");
+var category_ts_service_1 = require("./core/services/category.ts.service");
 var AppBaseRequestOptions = (function (_super) {
     __extends(AppBaseRequestOptions, _super);
     function AppBaseRequestOptions() {
@@ -50,7 +51,7 @@ AppModule = __decorate([
             http_1.HttpModule,
             routes_1.routing
         ],
-        declarations: [app_component_1.AppComponent],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
         providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,
             category_ts_service_1.CategoryService,
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },

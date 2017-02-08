@@ -8,6 +8,7 @@ import { Headers, RequestOptions, BaseRequestOptions } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routing } from './routes';
 import { HomeComponent } from './components/home/home.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 import { DataService } from './core/services/data.service';
@@ -15,7 +16,7 @@ import { MembershipService } from './core/services/membership.service';
 import { UtilityService } from './core/services/utility.service';
 import { NotificationService } from './core/services/notification.service';
 import{CategoryService} from './core/services/category.ts.service'
- 
+import { AccountModule } from './module/account/account.module';
 class AppBaseRequestOptions extends BaseRequestOptions {
     headers: Headers = new Headers();
 
@@ -31,10 +32,10 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing, AccountModule
     
     ],
-    declarations: [AppComponent,HomeComponent],
+    declarations: [AppComponent,HomeComponent,CategoryComponent],
     providers: [DataService, MembershipService, UtilityService, NotificationService,
     CategoryService,
    

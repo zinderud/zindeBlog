@@ -2,7 +2,7 @@
 
 @Component({
     selector: 'home',
-    templateUrl: './home.component.html'
+    templateUrl: './app/components/home/home.component.html'
 })
 export class HomeComponent {
 
