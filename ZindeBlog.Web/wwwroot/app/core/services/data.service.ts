@@ -1,8 +1,10 @@
-﻿import { Http, Response } from '@angular/http';
+﻿import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { NotificationService } from '../../core/services/notification.service';
-
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 
 @Injectable()
@@ -12,6 +14,7 @@ export class DataService {
     public _baseUri: string;
 
     constructor(public http: Http, public notificationService: NotificationService) {
+      
 
     }
 
@@ -21,14 +24,16 @@ export class DataService {
     }
 
     get(page: number) {
-        var uri = this._baseUri + page.toString() + '/' + this._pageSize.toString();
+        var uri = this._baseUri + '/' + this._pageSize.toString();
 
         return this.http.get(uri)
-            .map(response => (<Response>response));
+            .map(this.extractData)
+            .do(data => console.log('getData: ' + JSON.stringify(data)))
+            .catch(this.handleError);
     }
     getAll() {
-        return this.http.get(this._baseUri)
-            .map((response: Response) => <Response[]>response.json())
+        return this.http.get(this._baseUri) 
+            .map(this.extractData)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError); 
 
@@ -37,14 +42,20 @@ export class DataService {
     post(data?: any, mapJson: boolean = true) {
         if (mapJson)
             return this.http.post(this._baseUri, data)
-                .map(response => <any>(<Response>response).json());
+                .map(response => <any>(<Response>response).json()).catch(this.handleError);
         else
             return this.http.post(this._baseUri, data);
     }
 
     delete(id: number) {
-        return this.http.delete(this._baseUri + '/' + id.toString())
+
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.delete(this._baseUri + '/' + id.toString(),options)
             .map(response => <any>(<Response>response).json())
+            .do(data => console.log('deleteData: ' + this._baseUri + id.toString() +' ='+ JSON.stringify(data)))
+            .catch(this.handleError);
     }
 
     deleteResource(resource: string) {
@@ -53,7 +64,28 @@ export class DataService {
     }
 
 
+    private createProduct(any: any, options: RequestOptions): Observable<any> {
+        any.id = undefined;
+        return this.http.post(this._baseUri, any, options)
+            .map(this.extractData)
+            .do(data => console.log('createData: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
 
+    private updateProduct(any: any, options: RequestOptions): Observable<any> {
+        const url = this._baseUri;
+        return this.http.put(url, any, options)
+            .map(() => any)
+            .do(data => console.log('updatedata: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+
+
+    private extractData(res: Response) {
+        let body = res.json();
+        return body.data || {};
+    }
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

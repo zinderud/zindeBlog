@@ -22,11 +22,13 @@ var http_2 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var routes_1 = require("./routes");
 var home_component_1 = require("./components/home/home.component");
+var category_component_1 = require("./components/category/category.component");
 var data_service_1 = require("./core/services/data.service");
 var membership_service_1 = require("./core/services/membership.service");
 var utility_service_1 = require("./core/services/utility.service");
 var notification_service_1 = require("./core/services/notification.service");
 var category_ts_service_1 = require("./core/services/category.ts.service");
+var account_module_1 = require("./module/account/account.module");
 var AppBaseRequestOptions = (function (_super) {
     __extends(AppBaseRequestOptions, _super);
     function AppBaseRequestOptions() {
@@ -49,9 +51,9 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            routes_1.routing
+            routes_1.routing, account_module_1.AccountModule
         ],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent],
+        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, category_component_1.CategoryComponent],
         providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,
             category_ts_service_1.CategoryService,
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },

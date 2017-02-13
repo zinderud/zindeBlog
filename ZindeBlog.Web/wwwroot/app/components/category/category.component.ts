@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import 'rxjs/add/operator/map';
+ 
+ 
 import { enableProdMode } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+ 
 enableProdMode();
 import { CategoryService } from '../../core/services/category.ts.service';
 import { Category } from '../../core/domain/BlogDomain';
@@ -10,30 +11,38 @@ import { Category } from '../../core/domain/BlogDomain';
     selector: 'category',
     templateUrl: './app/components/category/category.component.html'
 
-              
+
 
 })
-export class CategoryComponent implements OnInit
-{
+export class CategoryComponent implements OnInit {
     pageTitle: string = 'Category Test';
-                _category:Observable< Category>;
+
+    
+
+    category: Category[] = []; 
+    newcategory: Category;
+    editId: number = 0;
+    errorMessage: string;
+
     constructor(public categoryService: CategoryService) {
-
-
-
-
-
-       // var c = new Category();
-       // c.Description = "ss";
-
-       //this._category.push(c);
+  
+    }
+ 
+    ngOnInit(): void {
+    
+       this.categoryService.all().subscribe((data: Category[]) => this.category = (data))
+    
     }
 
- 
-
-     
-
-    ngOnInit(): void {
-         this._category = this.categoryService.all();
+    Addcat()
+    {
+        this.categoryService.addcategory(this.newcategory)
+         .subscribe((status: boolean) => {
+                if (status) {
+                    this.editId = 0;
+                } else {
+                    this.errorMessage = 'Unable to save category';
+                }
+            })
     }
 }

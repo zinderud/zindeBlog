@@ -12,6 +12,9 @@ var http_1 = require("@angular/http");
 var core_1 = require("@angular/core");
 var Observable_1 = require("rxjs/Observable");
 var notification_service_1 = require("../../core/services/notification.service");
+require("rxjs/add/operator/do");
+require("rxjs/add/operator/catch");
+require("rxjs/add/operator/map");
 var DataService = (function () {
     function DataService(http, notificationService) {
         this.http = http;
@@ -28,9 +31,13 @@ var DataService = (function () {
     };
     DataService.prototype.getAll = function () {
         return this.http.get(this._baseUri)
-            .map(function (response) { return response.json(); })
+            .map(this.extractData)
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
+    };
+    DataService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
     };
     DataService.prototype.post = function (data, mapJson) {
         if (mapJson === void 0) { mapJson = true; }

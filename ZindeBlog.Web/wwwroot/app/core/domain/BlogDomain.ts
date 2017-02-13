@@ -1,9 +1,10 @@
 ﻿
 import {CommentStatus,PageStatus,TopicStatus,WidgetType } from "./BlogEnums"
-export class Category {
+export interface Category {
     ID: number;
     Name: string;
     Description: string;
+    Topic: Topic;
 }
 export class CategoryTopic {
     CategoryID: number;

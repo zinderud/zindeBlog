@@ -1,10 +1,4 @@
 "use strict";
-var Category = (function () {
-    function Category() {
-    }
-    return Category;
-}());
-exports.Category = Category;
 var CategoryTopic = (function () {
     function CategoryTopic() {
     }

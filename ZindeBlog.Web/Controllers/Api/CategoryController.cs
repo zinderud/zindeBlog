@@ -26,7 +26,8 @@ namespace ZindeBlog.Web.Controllers
         {
             var list = await CategoryService.All();
 
-            return Success(list);
+           // return Json(list);
+             return Success(list);
         }
 
         [HttpPost("")]

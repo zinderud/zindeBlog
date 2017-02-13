@@ -10,28 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var data_service_1 = require("./data.service");
-var notification_service_1 = require("../../core/services/notification.service");
 require("rxjs/add/operator/do");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/map");
 var CategoryService = (function () {
-    function CategoryService(categoryService, notificationService) {
+    function CategoryService(categoryService) {
         this.categoryService = categoryService;
-        this.notificationService = notificationService;
         this._categoryAllAPI = 'api/category/all/';
         this._categoryAddAPI = 'api/category/';
         this._categoryRemoveAPI = 'api/category/remove/';
         this._categoryEditAPI = 'api/category/{id:number}/';
+        this.category = [];
+        this.category = [];
     }
-    //all():Observable<Category>{
-    // return this._http.get(this._categoryAllAPI)
-    //             .map((response: Response) => <Category> response.json())
-    //            .do(data => console.log('All: ' +  JSON.stringify(data)))
-    //             ; 
-    //}
     CategoryService.prototype.all = function () {
         this.categoryService.set(this._categoryAllAPI);
-        return this.categoryService.getAll().map(function (response) { return response.json(); }).do(function (data) { return console.log('All: ' + JSON.stringify(data)); });
+        return this.categoryService.getAll();
     };
     CategoryService.prototype.addcategory = function (newcat) {
         this.categoryService.set(this._categoryAddAPI);
@@ -45,6 +39,6 @@ var CategoryService = (function () {
 }());
 CategoryService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [data_service_1.DataService, notification_service_1.NotificationService])
+    __metadata("design:paramtypes", [data_service_1.DataService])
 ], CategoryService);
 exports.CategoryService = CategoryService;
