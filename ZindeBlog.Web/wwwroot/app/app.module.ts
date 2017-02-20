@@ -17,6 +17,7 @@ import { UtilityService } from './core/services/utility.service';
 import { NotificationService } from './core/services/notification.service';
 import{CategoryService} from './core/services/category.ts.service'
 import { AccountModule } from './module/account/account.module';
+import {CategoryModule} from './module/category/category.module'
 class AppBaseRequestOptions extends BaseRequestOptions {
     headers: Headers = new Headers();
 
@@ -32,7 +33,8 @@ class AppBaseRequestOptions extends BaseRequestOptions {
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing, AccountModule
+        routing, AccountModule,
+        CategoryModule
     
     ],
     declarations: [AppComponent,HomeComponent,CategoryComponent],

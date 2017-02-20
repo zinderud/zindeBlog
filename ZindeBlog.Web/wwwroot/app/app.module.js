@@ -13,54 +13,55 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var http_1 = require("@angular/http");
-var forms_1 = require("@angular/forms");
-var common_1 = require("@angular/common");
-var http_2 = require("@angular/http");
-var app_component_1 = require("./app.component");
-var routes_1 = require("./routes");
-var home_component_1 = require("./components/home/home.component");
-var category_component_1 = require("./components/category/category.component");
-var data_service_1 = require("./core/services/data.service");
-var membership_service_1 = require("./core/services/membership.service");
-var utility_service_1 = require("./core/services/utility.service");
-var notification_service_1 = require("./core/services/notification.service");
-var category_ts_service_1 = require("./core/services/category.ts.service");
-var account_module_1 = require("./module/account/account.module");
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require('@angular/http');
+var forms_1 = require('@angular/forms');
+var common_1 = require('@angular/common');
+var http_2 = require('@angular/http');
+var app_component_1 = require('./app.component');
+var routes_1 = require('./routes');
+var home_component_1 = require('./components/home/home.component');
+var category_component_1 = require('./components/category/category.component');
+var data_service_1 = require('./core/services/data.service');
+var membership_service_1 = require('./core/services/membership.service');
+var utility_service_1 = require('./core/services/utility.service');
+var notification_service_1 = require('./core/services/notification.service');
+var category_ts_service_1 = require('./core/services/category.ts.service');
+var account_module_1 = require('./module/account/account.module');
+var category_module_1 = require('./module/category/category.module');
 var AppBaseRequestOptions = (function (_super) {
     __extends(AppBaseRequestOptions, _super);
     function AppBaseRequestOptions() {
-        var _this = _super.call(this) || this;
-        _this.headers = new http_2.Headers();
-        _this.headers.append('Content-Type', 'application/json');
-        _this.body = '';
-        return _this;
+        _super.call(this);
+        this.headers = new http_2.Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.body = '';
     }
     return AppBaseRequestOptions;
 }(http_2.BaseRequestOptions));
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                routes_1.routing, account_module_1.AccountModule,
+                category_module_1.CategoryModule
+            ],
+            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, category_component_1.CategoryComponent],
+            providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,
+                category_ts_service_1.CategoryService,
+                { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
+                { provide: http_2.RequestOptions, useClass: AppBaseRequestOptions }],
+            bootstrap: [app_component_1.AppComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            routes_1.routing, account_module_1.AccountModule
-        ],
-        declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, category_component_1.CategoryComponent],
-        providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,
-            category_ts_service_1.CategoryService,
-            { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy },
-            { provide: http_2.RequestOptions, useClass: AppBaseRequestOptions }],
-        bootstrap: [app_component_1.AppComponent]
-    }),
-    __metadata("design:paramtypes", [])
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

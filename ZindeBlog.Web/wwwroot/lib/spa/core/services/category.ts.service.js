@@ -29,11 +29,15 @@ var CategoryService = (function () {
     };
     CategoryService.prototype.addcategory = function (newcat) {
         this.categoryService.set(this._categoryAddAPI);
-        return this.categoryService.post(JSON.stringify(newcat));
+        return this.categoryService.post(JSON.stringify(newcat)).map(function (response) { return response.json(); });
     };
     CategoryService.prototype.deleteCategory = function (id) {
         this.categoryService.set(this._categoryRemoveAPI);
         return this.categoryService.delete(id);
+    };
+    CategoryService.prototype.getProduct = function (id) {
+        var _this = this;
+        this.categoryService.get(id).subscribe(function (category) { return _this.category = category; }, function (error) { return _this.errorMessage = error; });
     };
     return CategoryService;
 }());

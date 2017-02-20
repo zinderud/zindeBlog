@@ -1,0 +1,48 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">{{pageTitle}}</div>
+
+
+    <div class="panel-body">
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class="col-md4">
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+
+        </div>
+        <div class='row' *ngIf='listFilter'>
+            <div class='col-md-6'>
+                <h3>Filtered by: {{listFilter}} </h3>
+            </div>
+        </div>
+        <div class="table-responsive  ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+
+
+                        <th>name</th>
+
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let car of category |  categoryFilter:listFilter  '>
+                        <td> {{car.id}}</td>
+                        <td> {{car.name}}</td>
+                        <td> {{car.description}}</td>
+                        <td>
+                            <a class="btn btn-primary" [routerLink]="['/CategoryEdit', car.id]">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>

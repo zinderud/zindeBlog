@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var data_service_1 = require("./data.service");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
+var core_1 = require('@angular/core');
+var data_service_1 = require('./data.service');
+require('rxjs/add/operator/do');
+require('rxjs/add/operator/catch');
+require('rxjs/add/operator/map');
 var CategoryService = (function () {
     function CategoryService(categoryService) {
         this.categoryService = categoryService;
@@ -27,25 +27,23 @@ var CategoryService = (function () {
         this.categoryService.set(this._categoryAllAPI);
         return this.categoryService.getAll();
     };
-    CategoryService.prototype.allData = function () {
-        var _this = this;
-        this.categoryService.set(this._categoryAllAPI);
-        this.categoryService.getAll().subscribe(function (data) { return _this.category = (data); });
-        return this.category;
-    };
     CategoryService.prototype.addcategory = function (newcat) {
         this.categoryService.set(this._categoryAddAPI);
-        return this.categoryService.post(JSON.stringify(newcat));
+        return this.categoryService.post(JSON.stringify(newcat)).map(function (response) { return response.json(); });
     };
     CategoryService.prototype.deleteCategory = function (id) {
         this.categoryService.set(this._categoryRemoveAPI);
         return this.categoryService.delete(id);
     };
+    CategoryService.prototype.getProduct = function (id) {
+        var _this = this;
+        this.categoryService.get(id).subscribe(function (category) { return _this.category = category; }, function (error) { return _this.errorMessage = error; });
+    };
+    CategoryService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [data_service_1.DataService])
+    ], CategoryService);
     return CategoryService;
 }());
-CategoryService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [data_service_1.DataService])
-], CategoryService);
 exports.CategoryService = CategoryService;
 //# sourceMappingURL=category.ts.service.js.map

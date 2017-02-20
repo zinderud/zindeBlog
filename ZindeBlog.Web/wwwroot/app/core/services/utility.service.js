@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var UtilityService = (function () {
     function UtilityService(router) {
         this._router = router;
@@ -24,11 +24,11 @@ var UtilityService = (function () {
     UtilityService.prototype.navigateToSignIn = function () {
         this.navigate('/account/login');
     };
+    UtilityService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], UtilityService);
     return UtilityService;
 }());
-UtilityService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [router_1.Router])
-], UtilityService);
 exports.UtilityService = UtilityService;
 //# sourceMappingURL=utility.service.js.map

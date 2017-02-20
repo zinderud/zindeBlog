@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var user_1 = require("../../core/domain/user");
-var operationResult_1 = require("../../core/domain/operationResult");
-var membership_service_1 = require("../../core/services/membership.service");
-var notification_service_1 = require("../../core/services/notification.service");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var user_1 = require('../../core/domain/user');
+var operationResult_1 = require('../../core/domain/operationResult');
+var membership_service_1 = require('../../core/services/membership.service');
+var notification_service_1 = require('../../core/services/notification.service');
 var LoginComponent = (function () {
     function LoginComponent(membershipService, notificationService, router) {
         this.membershipService = membershipService;
@@ -42,16 +42,14 @@ var LoginComponent = (function () {
         });
     };
     ;
+    LoginComponent = __decorate([
+        core_1.Component({
+            selector: 'albums',
+            templateUrl: './app/module/account/login.component.html'
+        }), 
+        __metadata('design:paramtypes', [membership_service_1.MembershipService, notification_service_1.NotificationService, router_1.Router])
+    ], LoginComponent);
     return LoginComponent;
 }());
-LoginComponent = __decorate([
-    core_1.Component({
-        selector: 'albums',
-        templateUrl: './app/module/account/login.component.html'
-    }),
-    __metadata("design:paramtypes", [membership_service_1.MembershipService,
-        notification_service_1.NotificationService,
-        router_1.Router])
-], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

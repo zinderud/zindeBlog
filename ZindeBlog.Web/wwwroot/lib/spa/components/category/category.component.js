@@ -17,10 +17,23 @@ var CategoryComponent = (function () {
         this.categoryService = categoryService;
         this.pageTitle = 'Category Test';
         this.category = [];
+        this.editId = 0;
     }
     CategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.categoryService.all().subscribe(function (data) { return _this.category = (data); });
+    };
+    CategoryComponent.prototype.Addcat = function () {
+        var _this = this;
+        this.categoryService.addcategory(this.newcategory)
+            .subscribe(function (status) {
+            if (status) {
+                _this.editId = 0;
+            }
+            else {
+                _this.errorMessage = 'Unable to save category';
+            }
+        });
     };
     return CategoryComponent;
 }());

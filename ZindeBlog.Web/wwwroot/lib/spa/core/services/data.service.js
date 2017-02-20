@@ -25,9 +25,11 @@ var DataService = (function () {
         this._pageSize = pageSize;
     };
     DataService.prototype.get = function (page) {
-        var uri = this._baseUri + page.toString() + '/' + this._pageSize.toString();
+        var uri = this._baseUri + '/' + this._pageSize.toString();
         return this.http.get(uri)
-            .map(function (response) { return response; });
+            .map(this.extractData)
+            .do(function (data) { return console.log('getData: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
     };
     DataService.prototype.getAll = function () {
         return this.http.get(this._baseUri)
@@ -35,25 +37,44 @@ var DataService = (function () {
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    DataService.prototype.extractData = function (res) {
-        var body = res.json();
-        return body.data || {};
-    };
     DataService.prototype.post = function (data, mapJson) {
         if (mapJson === void 0) { mapJson = true; }
         if (mapJson)
             return this.http.post(this._baseUri, data)
-                .map(function (response) { return response.json(); });
+                .map(function (response) { return response.json(); }).catch(this.handleError);
         else
             return this.http.post(this._baseUri, data);
     };
     DataService.prototype.delete = function (id) {
-        return this.http.delete(this._baseUri + '/' + id.toString())
-            .map(function (response) { return response.json(); });
+        var _this = this;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.delete(this._baseUri + '/' + id.toString(), options)
+            .map(function (response) { return response.json(); })
+            .do(function (data) { return console.log('deleteData: ' + _this._baseUri + id.toString() + ' =' + JSON.stringify(data)); })
+            .catch(this.handleError);
     };
     DataService.prototype.deleteResource = function (resource) {
         return this.http.delete(resource)
             .map(function (response) { return response.json(); });
+    };
+    DataService.prototype.createProduct = function (any, options) {
+        any.id = undefined;
+        return this.http.post(this._baseUri, any, options)
+            .map(this.extractData)
+            .do(function (data) { return console.log('createData: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    DataService.prototype.updateProduct = function (any, options) {
+        var url = this._baseUri;
+        return this.http.put(url, any, options)
+            .map(function () { return any; })
+            .do(function (data) { return console.log('updatedata: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    DataService.prototype.extractData = function (res) {
+        var body = res.json();
+        return body.data || {};
     };
     DataService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

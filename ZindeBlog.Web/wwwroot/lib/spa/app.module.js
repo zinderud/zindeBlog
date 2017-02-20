@@ -29,6 +29,7 @@ var utility_service_1 = require("./core/services/utility.service");
 var notification_service_1 = require("./core/services/notification.service");
 var category_ts_service_1 = require("./core/services/category.ts.service");
 var account_module_1 = require("./module/account/account.module");
+var category_module_1 = require("./module/category/category.module");
 var AppBaseRequestOptions = (function (_super) {
     __extends(AppBaseRequestOptions, _super);
     function AppBaseRequestOptions() {
@@ -51,7 +52,8 @@ AppModule = __decorate([
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
-            routes_1.routing, account_module_1.AccountModule
+            routes_1.routing, account_module_1.AccountModule,
+            category_module_1.CategoryModule
         ],
         declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, category_component_1.CategoryComponent],
         providers: [data_service_1.DataService, membership_service_1.MembershipService, utility_service_1.UtilityService, notification_service_1.NotificationService,

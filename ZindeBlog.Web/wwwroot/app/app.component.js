@@ -8,11 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/// <reference path="../../typings/globals/es6-shim/index.d.ts" />
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-require("rxjs/add/operator/map");
-var core_2 = require("@angular/core");
+var core_1 = require('@angular/core');
+var common_1 = require('@angular/common');
+require('rxjs/add/operator/map');
+var core_2 = require('@angular/core');
 core_2.enableProdMode();
 var membership_service_1 = require("./core/services/membership.service");
 var AppComponent = (function () {
@@ -39,15 +38,14 @@ var AppComponent = (function () {
             localStorage.removeItem('user');
         }, function (error) { return console.error('Error: ' + error); }, function () { });
     };
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'zindeblog-app',
+            templateUrl: './app/app.component.html'
+        }), 
+        __metadata('design:paramtypes', [membership_service_1.MembershipService, common_1.Location])
+    ], AppComponent);
     return AppComponent;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'zindeblog-app',
-        templateUrl: 'app/app.component.html'
-    }),
-    __metadata("design:paramtypes", [membership_service_1.MembershipService,
-        common_1.Location])
-], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

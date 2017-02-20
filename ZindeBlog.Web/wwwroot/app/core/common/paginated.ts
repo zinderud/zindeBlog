@@ -17,7 +17,7 @@
         var end = start + 1 + doubleStep;
         if (end > this._pagesCount) { end = this._pagesCount; }
 
-        var ret = [];
+        var ret:any[] = [];
         for (var i = start; i != end; ++i) {
             ret.push(i);
         }
@@ -29,7 +29,7 @@
         return + this._page + count;
     }
 
-    search(i): void {
+    search(i:any): void {
         this._page = i;
     };
 }

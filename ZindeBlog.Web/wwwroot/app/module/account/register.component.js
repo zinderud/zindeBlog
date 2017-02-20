@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var registration_1 = require("../../core/domain/registration");
-var operationResult_1 = require("../../core/domain/operationResult");
-var membership_service_1 = require("../../core/services/membership.service");
-var notification_service_1 = require("../../core/services/notification.service");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var registration_1 = require('../../core/domain/registration');
+var operationResult_1 = require('../../core/domain/operationResult');
+var membership_service_1 = require('../../core/services/membership.service');
+var notification_service_1 = require('../../core/services/notification.service');
 var RegisterComponent = (function () {
     function RegisterComponent(membershipService, notificationService, router) {
         this.membershipService = membershipService;
@@ -41,17 +41,15 @@ var RegisterComponent = (function () {
         });
     };
     ;
+    RegisterComponent = __decorate([
+        core_1.Component({
+            selector: 'register',
+            providers: [membership_service_1.MembershipService, notification_service_1.NotificationService],
+            templateUrl: './app/module/account/register.component.html'
+        }), 
+        __metadata('design:paramtypes', [membership_service_1.MembershipService, notification_service_1.NotificationService, router_1.Router])
+    ], RegisterComponent);
     return RegisterComponent;
 }());
-RegisterComponent = __decorate([
-    core_1.Component({
-        selector: 'register',
-        providers: [membership_service_1.MembershipService, notification_service_1.NotificationService],
-        templateUrl: './app/module/account/register.component.html'
-    }),
-    __metadata("design:paramtypes", [membership_service_1.MembershipService,
-        notification_service_1.NotificationService,
-        router_1.Router])
-], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

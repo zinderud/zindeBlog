@@ -1,8 +1,8 @@
 "use strict";
-var router_1 = require("@angular/router");
-var account_component_1 = require("./account.component");
-var login_component_1 = require("./login.component");
-var register_component_1 = require("./register.component");
+var router_1 = require('@angular/router');
+var account_component_1 = require('./account.component');
+var login_component_1 = require('./login.component');
+var register_component_1 = require('./register.component');
 exports.accountRoutes = [
     {
         path: 'account',
